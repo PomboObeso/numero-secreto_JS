@@ -13,7 +13,9 @@ recognition.addEventListener('result', onSpeak);
 
 function onSpeak(event) {
     let chute = event.results[0][0].transcript;
-    exibirChute(chute);
+    let chuteFormatado = chute.replace(".","");
+    validaNumero(chuteFormatado);
+    exibirChute(chuteFormatado);
 }
 
 function exibirChute(chute){
@@ -22,3 +24,7 @@ function exibirChute(chute){
         <span class="box">${chute}</span>
     `
 }
+
+recognition.addEventListener('end', () => {
+    recognition.start();
+})
